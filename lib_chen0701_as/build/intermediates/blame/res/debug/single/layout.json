@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\layout\\custom_notify.xml",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\layout\\custom_notify.xml"
+    },
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\layout\\custom_toast.xml",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\layout\\custom_toast.xml"
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_error.png",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\drawable-hdpi\\ic_error.png"
+    },
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_empty.png",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\drawable-hdpi\\ic_empty.png"
+    },
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_stub.png",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\drawable-hdpi\\ic_stub.png"
+    },
+    {
+        "merged": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\search_clear_normal.png",
+        "source": "D:\\ASProjects\\News\\lib_chen0701_as\\src\\main\\res\\drawable-hdpi\\search_clear_normal.png"
+    }
+]

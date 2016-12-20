@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 22
+        versionCode 3
+        versionName '3.0'
+//        compileOptions {
+//            sourceCompatibility JavaVersion.VERSION_1_8
+//            targetCompatibility JavaVersion.VERSION_1_8
+//        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    productFlavors {
+    }
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.okio:okio:1.8.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //    compile files('libs/ActiveAndroid-3.1.jar')
+    //    compile files('libs/lib_volley0315.jar')
+    //    compile files('libs/lib_nineold.jar')
+    //    compile files('libs/universal-image-loader-1.9.5.jar')
+    //    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+}

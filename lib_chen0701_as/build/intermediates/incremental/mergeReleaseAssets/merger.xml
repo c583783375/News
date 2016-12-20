@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\ASProjects\News\lib_chen0701_as\src\main\assets"><file name="upgrade.txt" path="D:\ASProjects\News\lib_chen0701_as\src\main\assets\upgrade.txt"/></source><source path="D:\ASProjects\News\lib_chen0701_as\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\ASProjects\News\lib_chen0701_as\src\release\assets"/></dataSet></merger>

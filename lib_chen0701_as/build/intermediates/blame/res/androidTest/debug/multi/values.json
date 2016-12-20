@@ -1,0 +1,144 @@
+[
+    {
+        "outputFile": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1654,
+                    "endColumn": 74,
+                    "endOffset": 1724
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\25.1.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 372,
+                        "endColumn": 74,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1729,
+                    "endColumn": 75,
+                    "endOffset": 1800
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\25.1.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 447,
+                        "endColumn": 75,
+                        "endOffset": 518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1805,
+                    "endColumn": 71,
+                    "endOffset": 1872
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\25.1.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 523,
+                        "endColumn": 71,
+                        "endOffset": 590
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1877,
+                    "endColumn": 65,
+                    "endOffset": 1938
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\25.1.0\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 595,
+                        "endColumn": 65,
+                        "endOffset": 656
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1943,
+                    "endColumn": 47,
+                    "endOffset": 1986
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1337,
+                        "endColumn": 47,
+                        "endOffset": 1380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1991,
+                    "endLine": 27,
+                    "endColumn": 12,
+                    "endOffset": 2278
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1385,
+                        "endLine": 22,
+                        "endColumn": 12,
+                        "endOffset": 1672
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 2283,
+                    "endLine": 30,
+                    "endColumn": 12,
+                    "endOffset": 2438
+                },
+                "from": {
+                    "file": "D:\\ASProjects\\News\\lib_chen0701_as\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1677,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 1832
+                    }
+                }
+            }
+        ]
+    }
+]
