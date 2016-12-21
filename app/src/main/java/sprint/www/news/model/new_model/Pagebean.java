@@ -1,4 +1,4 @@
-package sprint.www.news.entity.new_model;
+package sprint.www.news.model.new_model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

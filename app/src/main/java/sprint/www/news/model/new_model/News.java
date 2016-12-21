@@ -1,9 +1,9 @@
-package sprint.www.news.entity.new_title_model;
+package sprint.www.news.model.new_model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NewTitle {
+public class News {
 
     @SerializedName("showapi_res_code")
     @Expose

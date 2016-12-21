@@ -1,6 +1,7 @@
 package com.xinbo.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -134,6 +135,8 @@ public class HTTPUtils {
 			mRequestQueue.cancelAll(context);
 		}
 	}
+
+
 
 	/**
 	 * Returns instance of ImageLoader initialized with {@see FakeImageCache}

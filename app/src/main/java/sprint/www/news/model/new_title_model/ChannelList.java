@@ -1,16 +1,19 @@
-package sprint.www.news.entity.new_title_model;
+package sprint.www.news.model.new_title_model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ChannelList {
+import java.io.Serializable;
 
+public class ChannelList implements Serializable{
+
+    private static final long serialVersionUID = -1L;
     @SerializedName("channelId")
     @Expose
-    private String channelId;
+    public String channelId;
     @SerializedName("name")
     @Expose
-    private String name;
+    public String name;
 
     /**
      * 
@@ -48,4 +51,11 @@ public class ChannelList {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "ChannelList{" +
+                "channelId='" + channelId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
