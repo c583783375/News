@@ -5,12 +5,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lzy.ninegrid.NineGridView;
+
 import sprint.www.news.base.BaseActivity;
 import sprint.www.news.fragment.HomeFragment;
 import sprint.www.news.fragment.MineFragment;
 import sprint.www.news.fragment.TelFragment;
 import sprint.www.news.fragment.VideoFragment;
 import sprint.www.news.utils.Constants;
+import sprint.www.news.utils.GlideImageLoader;
 
 public class MainActivity extends BaseActivity {
 
@@ -22,6 +25,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        NineGridView.setImageLoader(new GlideImageLoader());
+
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 

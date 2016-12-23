@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,10 +16,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
+import com.xinbo.utils.GsonUtils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,17 +39,14 @@ import okhttp3.Response;
 import sprint.www.news.R;
 import sprint.www.news.adapter.NewsRecycleAdapter;
 import sprint.www.news.base.BaseFragment;
-import sprint.www.news.callback.NewsJsonCallback;
-import sprint.www.news.model.NewsResponse;
-import sprint.www.news.model.new_model.Contentlist;
-import sprint.www.news.model.new_model.Pagebean;
+import sprint.www.news.model.new_model.NewsContent;
 import sprint.www.news.model.new_title_model.ShowapiResBody;
 import sprint.www.news.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
+public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,BaseQuickAdapter.RequestLoadMoreListener{
 
     @BindView(R.id.content_recyclerView)
     RecyclerView mRecyclerView;
@@ -74,8 +82,13 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
     }
 
     private void findView() {
+
         mAdapter = new NewsRecycleAdapter(R.layout.item_news,null);
         mAdapter.isFirstOnly(false);
+        //设置动画
+        mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        mAdapter.setOnLoadMoreListener(this);
+      //  mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         mRecyclerView.setAdapter(mAdapter);
 
@@ -102,15 +115,39 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
                 .params("channelName",mTitle.name)
                 .params("page",currentPage + 1)
                 .cacheKey(mTitle.channelId)
-                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
-                .execute(new NewsJsonCallback<NewsResponse<sprint.www.news.model.new_model.ShowapiResBody>>() {
+                .cacheMode(CacheMode.NO_CACHE)
+                .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(NewsResponse<sprint.www.news.model.new_model.ShowapiResBody> newsResponse, Call call, Response response) {
-                        sprint.www.news.model.new_model.ShowapiResBody showapiResBody = newsResponse.showapi_res_body;
-                        if(0 == showapiResBody.getRetCode())
+                    public void onSuccess(String s, Call call, Response response) {
+                        try{
+                            JSONArray object = new JSONObject(s).getJSONObject("showapi_res_body").getJSONObject("pagebean").getJSONArray("contentlist");
+                            Type newsContentType = new TypeToken<List<NewsContent>>() {}.getType();
+                            List<NewsContent> more = new Gson().fromJson(object.toString(), newsContentType);
+                            Log.e("============",more.toString());
+                            mAdapter.setNewData(more);
+                            mSwipeRefreshLayout.setRefreshing(false);
+                            currentPage++;
+                        }catch(Exception e)
                         {
-                            List<Contentlist> contentlist= showapiResBody.getPagebean().getContentlist();
-                            currentPage = showapiResBody.getPagebean().getCurrentPage();
+                            showToast("解析错误！");
+                        }
+                    }
+
+                    @Override
+                    public void onError(Call call, Response response, Exception e) {
+                        super.onError(call, response, e);
+                        showToast(e.getMessage());
+                    }
+                });
+                /**
+                .execute(new NewsJsonCallback<NewsResponse<ResBody>>() {
+                    @Override
+                    public void onSuccess(NewsResponse<ResBody> newsResponse, Call call, Response response) {
+                        ResBody showapiResBody = newsResponse.showapi_res_body;
+                        if(0 == showapiResBody.retCode)
+                        {
+                            List<ResBody.Contentlist> contentlist= showapiResBody.pagebean.contentlist;
+                            currentPage = showapiResBody.pagebean.currentPage;
                             mAdapter.setNewData(contentlist);
                         }
                     }
@@ -124,7 +161,7 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
                     }
 
                     @Override
-                    public void onAfter(@Nullable NewsResponse<sprint.www.news.model.new_model.ShowapiResBody> newsResponse, @Nullable Exception e) {
+                    public void onAfter(@Nullable NewsResponse<sprint.www.news.model.new_model.ResBody> newsResponse, @Nullable Exception e) {
                         super.onAfter(newsResponse, e);
                         //可能需要移除之前添加的布局
                         mAdapter.removeAllFooterView();
@@ -132,7 +169,7 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
                         setRefreshing(false);
                     }
                 });
-
+                */
     }
 
     //放在子线程中 如果没有放在子线程中 无法看到加载的效果
@@ -149,15 +186,38 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
     public void showToast(String msg) {
         Snackbar.make(mRecyclerView, msg, Snackbar.LENGTH_SHORT).show();
     }
-//    private void showToast(String str)
-//    {
-//        if(mToast == null)
-//        {
-//            mToast = Toast.makeText(getContext() , str ,Toast.LENGTH_SHORT);
-//        }else{
-//            mToast.setText(str);
-//        }
-//        mToast.show();
-//    }
 
+    //加载更多
+    @Override
+    public void onLoadMoreRequested() {
+        OkGo.post(Constants.Urls.NEWS)
+                .tag(this)
+                .params("showapi_appid", String.valueOf(Constants.NewKey.showapi_appid))
+                .params("showapi_sign",Constants.NewKey.showapi_sign)
+                .params("channelId",mTitle.channelId)
+                .params("channelName",mTitle.name)
+                .params("page",currentPage + 1)
+                .cacheKey(mTitle.channelId)
+                .cacheMode(CacheMode.NO_CACHE)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(String s, Call call, Response response) {
+                        try{
+                            JSONArray object = new JSONObject(s).getJSONObject("showapi_res_body").getJSONObject("pagebean").getJSONArray("contentlist");
+                            Type newsContentType = new TypeToken<List<NewsContent>>() {}.getType();
+                            List<NewsContent> more = new Gson().fromJson(object.toString(), newsContentType);
+                            Log.e("============",more.toString());
+                            mAdapter.addData(more);
+                            //mAdapter.notifyDataSetChanged();
+//                            newsAdapter.loadComplete();         //加载完成
+//                            View noDataView = inflater.inflate(R.layout.item_no_data, (ViewGroup) recyclerView.getParent(), false);
+//                            newsAdapter.addFooterView(noDataView);
+                            currentPage++;
+                        }catch(Exception e)
+                        {
+                            showToast("解析错误！");
+                        }
+                    }
+                });
+    }
 }
