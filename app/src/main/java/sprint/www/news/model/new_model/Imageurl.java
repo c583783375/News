@@ -1,18 +1,14 @@
 package sprint.www.news.model.new_model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class Imageurl {
+import java.io.Serializable;
 
-    @SerializedName("height")
-    @Expose
+public class Imageurl implements Serializable{
+
+    private static final long serialVersionUID = -1L;
+
     private Integer height;
-    @SerializedName("width")
-    @Expose
     private Integer width;
-    @SerializedName("url")
-    @Expose
     private String url;
 
     /**

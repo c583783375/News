@@ -1,15 +1,13 @@
 package sprint.www.news.model.new_model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-public class ShowapiResBody {
+import java.io.Serializable;
 
-    @SerializedName("ret_code")
-    @Expose
+public class ShowapiResBody implements Serializable{
+
+    private static final long serialVersionUID = -1L;
+
     private Integer retCode;
-    @SerializedName("pagebean")
-    @Expose
     private Pagebean pagebean;
 
     /**

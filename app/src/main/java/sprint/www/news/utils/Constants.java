@@ -26,7 +26,10 @@ public class Constants {
         public static String showapi_appid = "29199";
         public static String showapi_sign = "da041ac7311e4324a609466a637f4691";
         public static String channelId = "5572a108b3cdc86cf39001ce";
-        public static String name = "国际焦点";
+        public static String channelName = "国际焦点";
     }
+
+
+    public static final String NEWSTITLE = "newsTitle"; //缓存的key 跟bundle 的key
 
 }

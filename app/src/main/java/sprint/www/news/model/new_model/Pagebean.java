@@ -1,27 +1,18 @@
 package sprint.www.news.model.new_model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pagebean {
+public class Pagebean  implements Serializable{
 
-    @SerializedName("allPages")
-    @Expose
+    private static final long serialVersionUID = -1L;
+
     private Integer allPages;
-    @SerializedName("contentlist")
-    @Expose
     private List<Contentlist> contentlist = new ArrayList<Contentlist>();
-    @SerializedName("currentPage")
-    @Expose
     private Integer currentPage;
-    @SerializedName("allNum")
-    @Expose
     private Integer allNum;
-    @SerializedName("maxResult")
-    @Expose
     private Integer maxResult;
 
     /**

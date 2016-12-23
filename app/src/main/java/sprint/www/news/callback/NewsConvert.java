@@ -12,6 +12,9 @@ import sprint.www.news.utils.Convert;
 
 /**
  * Created by admin on 2016/12/21 0021.
+ * 每次根据不同的项目模型不同进行修改
+ * 由于目前新闻类项目的外围用的是用一个model 所有可以直接复用
+ *
  */
 
 public class NewsConvert<T> implements Converter {
@@ -30,8 +33,10 @@ public class NewsConvert<T> implements Converter {
     public T convertSuccess(Response response) throws Exception {
         JsonReader jsonReader = new JsonReader(response.body().charStream());
         Type rawType = type.getRawType();
+        //NewsResponse.class model 类  一般修改这边
         if (rawType == NewsResponse.class) {
             NewsResponse newsResponse = Convert.fromJson(jsonReader, type);
+            //如果要根据code 值进行修改可以在这边 增加分支
             if (newsResponse.showapi_res_code == 0) {
                 //noinspection unchecked
                 return (T) newsResponse;

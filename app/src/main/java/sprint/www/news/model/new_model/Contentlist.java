@@ -1,42 +1,23 @@
 package sprint.www.news.model.new_model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Contentlist {
+public class Contentlist implements Serializable {
 
-    @SerializedName("allList")
-    @Expose
+    private static final long serialVersionUID = -1L;
+
     private List<String> allList = new ArrayList<String>();
-    @SerializedName("pubDate")
-    @Expose
     private String pubDate;
-    @SerializedName("havePic")
-    @Expose
     private Boolean havePic;
-    @SerializedName("title")
-    @Expose
     private String title;
-    @SerializedName("channelName")
-    @Expose
     private String channelName;
-    @SerializedName("imageurls")
-    @Expose
     private List<Imageurl> imageurls = new ArrayList<Imageurl>();
-    @SerializedName("desc")
-    @Expose
     private String desc;
-    @SerializedName("source")
-    @Expose
     private String source;
-    @SerializedName("channelId")
-    @Expose
     private String channelId;
-    @SerializedName("link")
-    @Expose
     private String link;
 
     /**
