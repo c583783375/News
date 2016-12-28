@@ -56,7 +56,6 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
     private   List<Contentlist> moreList = new ArrayList<>();
     private NewsRecycleAdapter mAdapter;
     private Toast mToast;
-    private boolean isInitCache;
     public ContentFragment() {
         // Required empty public constructor
     }
@@ -150,8 +149,8 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
                 .params("channelId",mTitle.channelId)
                 .params("channelName",mTitle.name)
                 .params("page",currentPage + 1)
-                .cacheKey(mTitle.channelId)
-                .cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+                .cacheKey(String.valueOf(mTitle.channelId))
+                .cacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)
                 .execute(new NewsJsonCallback<NewsResponse<ResBody>>() {
                     @Override
                     public void onSuccess(NewsResponse<ResBody> newsResponse, Call call, Response response) {
@@ -166,11 +165,8 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
                     public void onCacheSuccess(NewsResponse<ResBody> resBodyNewsResponse, Call call) {
                         super.onCacheSuccess(resBodyNewsResponse, call);
                         //第一次进来才使用缓存
-                        if(!isInitCache)
-                        {
                             onSuccess(resBodyNewsResponse,call,null);
-                            isInitCache = true;
-                        }
+
                     }
 
                     @Override

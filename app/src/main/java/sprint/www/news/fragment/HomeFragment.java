@@ -89,13 +89,7 @@ public class HomeFragment extends BaseFragment{
                     @Override
                     public void onCacheSuccess(NewsResponse<ShowapiResBody> newsResponse, okhttp3.Call call) {
                         super.onCacheSuccess(newsResponse, call);
-                        ShowapiResBody showapiResBody = newsResponse.showapi_res_body;
-                        List<ShowapiResBody.ChannelList> channelList = showapiResBody.channelList;
-                        mList.clear();
-                        mList.addAll(channelList);
-
-                        initAdapter();
-
+                        onSuccess(newsResponse,call,null);
                     }
                 });
 
